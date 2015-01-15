@@ -3,8 +3,8 @@
     alias: 'layoutcontroller',
     itemId: 'layoutController',
     views: [
-        'layout.LayoutTableView',
-        'layout.JavaScript1'
+        'layout.LayoutTableView'
+        
     ],
     refs: [
         { ref: 'layoutTableView', selector: '#layoutTableView' },
@@ -38,14 +38,12 @@
         var items = articulo.store.data.items;
         for (var i = 0; i < items.length; i++) {
             console.log(items[i].data.articulo)
-            if (items[i].data.articulo == nombreProducto.value) {
-                console.log('el paquete llego ', nombreProducto.value)
+            if (items[i].data.articulo == nombreProducto.value) {             
                 var precio = items[i].data.precio;
                 console.log(precio)
             } 
         }
-        var calcular = precio * cantidad.value;
-        console.log(calcular);
+        var calcular = precio * cantidad.value;        
         resultado.setValue(calcular);
         detalle.setValue('producto :' + nombreProducto.value + ' $ ' + precio);
     }

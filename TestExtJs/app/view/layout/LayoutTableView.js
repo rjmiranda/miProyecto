@@ -97,8 +97,8 @@
                     ]
                 },
                 listeners: {
-                    select: function (obj, record, index) {
-                        // console.log(record.data.articulo);
+                    select: function (obj,record,index) {
+                        // console.log(record.data.articulo);                   
                         var articulo = record.data.articulo;
                         //console.log(articulo);
                         var textField = Ext.ComponentQuery.query('#textField');

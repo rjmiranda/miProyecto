@@ -1,7 +1,8 @@
 ﻿Ext.define('DVLOOP.view.usuarios.user.EditView', {
     extend: 'Ext.window.Window',
     alias: 'widget.usuariosuseredit',
-    itemId:'usuariosUserEditView',
+    itemId: 'usuariosUserEditView',
+    modal:true,
     title: 'Edit User',
     layout: 'fit',
     autoShow: true,
