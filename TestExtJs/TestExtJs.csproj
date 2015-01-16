@@ -169,11 +169,6 @@
     <Content Include="app\controller\LayoutController.js" />
     <Content Include="app\controller\UsersController.js" />
     <Content Include="app\view\HomeView.js" />
-    <Content Include="app\view\layout\GridUnoButtonCalculadorda1.js" />
-    <Content Include="app\view\layout\JavaScript1.js" />
-    <Content Include="app\view\layout\JavaScript2.js" />
-    <Content Include="app\view\layout\JavaScript3.js" />
-    <Content Include="app\view\layout\JavaScript4.js" />
     <Content Include="app\view\layout\LayoutTableView.js" />
     <Content Include="app\view\usuarios\user\EditView.js" />
     <Content Include="app\view\usuarios\user\ListView.js" />
