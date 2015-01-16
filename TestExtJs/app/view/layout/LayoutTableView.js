@@ -38,14 +38,15 @@
                         'vidrio',
                         'aceroInox',
                         'porcelana',
-                        'precio'
+                        'precio',
+                        'activar'
                     ],
                     data: [
-                        { articulo: 'Plato', marca: 'Tsuji', modelo: true, vidrio: 'NO', aceroInox: 'NO', porcelana: 'YES', precio: 50 },
-                        { articulo: 'Vaso', marca: 'Winsord', modelo: false, vidrio: 'YES', aceroInox: 'NO', porcelana: 'NO', precio: 10 },
-                        { articulo: 'Detergente', marca: 'Ariel', modelo: false, vidrio: 'NO', aceroInox: 'NO', porcelana: 'NO', precio: 110 },
-                        { articulo: 'Cuchillo', marca: 'Arbolito', modelo: true, vidrio: 'NO', aceroInox: 'YES', porcelana: 'NO', precio: 550 },
-                        { articulo: 'Sarten Argentino', marca: 'Pingocho', modelo: true, vidrio: 'NO', aceroInox: 'SI', porcelana: 'NO', precio: 999 }
+                        { articulo: 'Plato', marca: 'Tsuji', modelo: true, vidrio: 'NO', aceroInox: 'NO', porcelana: 'YES', precio: 50, activar: true },
+                        { articulo: 'Vaso', marca: 'Winsord', modelo: false, vidrio: 'YES', aceroInox: 'NO', porcelana: 'NO', precio: 10, activar: false },
+                        { articulo: 'Detergente', marca: 'Ariel', modelo: false, vidrio: 'NO', aceroInox: 'NO', porcelana: 'NO', precio: 110, activar: true },
+                        { articulo: 'Cuchillo', marca: 'Arbolito', modelo: true, vidrio: 'NO', aceroInox: 'YES', porcelana: 'NO', precio: 550, activar: false },
+                        { articulo: 'Sarten Argentino', marca: 'Pingocho', modelo: true, vidrio: 'NO', aceroInox: 'SI', porcelana: 'NO', precio: 999, activar: true }
                     ]
                 },
                 columns: {
@@ -93,22 +94,45 @@
                             dataIndex: 'precio',
                             tooltip: 'Precio',
                             flex: 1
+                        },
+                        {
+                            xtype: 'checkcolumn',
+                            text: 'Activar',
+                            dataIndex: 'activar'
                         }
                     ]
                 },
                 listeners: {
-                    select: function (obj,record,index) {
-                        // console.log(record.data.articulo);                   
+                    select: function (obj, record, rowIndex) {
+                       
+                        var datoEliminado = record.data
                         var articulo = record.data.articulo;
-                        //console.log(articulo);
+                        var rowIndex = rowIndex;
+                        console.log(rowIndex);
                         var textField = Ext.ComponentQuery.query('#textField');
-                        //console.log(textField);
                         var value = textField[0];
-                        // console.log(value);
                         var campos = value.setValue(articulo);
+
+                        //this.getStore().insert(0, rec);
+                        //this.cellEditing.startEditByPosition({
+                        //    row: 0,
+                        //    column: 0
+                        //});
+
+                      //  this.getStore().removeAt(rowIndex);                        
+                        console.log(datoEliminado);
+                        var Grilla6 = Ext.ComponentQuery.query('#grilla6')
+                        var Grilla6Items = Grilla6[0].store.data.items[0].data;
+                        var Grilla06 = Grilla6[0].store
+                        var poner = Grilla06.add(datoEliminado)
                     }
                 }
-
+            },
+            {
+                xtype: 'button',
+                text: 'boton',
+                width: 100,
+                action: 'ingresarProductos'
             },
             {
                 xtype: 'panel',
@@ -296,7 +320,7 @@
                     name: 'textfield',
                     fieldLabel: 'Registros de la grilla "Productos" ',
                     width: 600
-                },               
+                },
                 //    xtype: 'templatepanel',
                 //    itemid: 'articulostemplatepanel',
                 //    height: 40,
@@ -310,17 +334,17 @@
                 //        '</table>'
                 //    ])
 
-                    //  //  **************************
-                    //    var valor = articulo;
+                //  //  **************************
+                //    var valor = articulo;
 
 
-                    //    articulosTemplatePanel.loadTeplate(
-                    //        totalItems: articulo,
-                    //    totalImputado: 0,
-                    //    saldoPendiente: 0
+                //    articulosTemplatePanel.loadTeplate(
+                //        totalItems: articulo,
+                //    totalImputado: 0,
+                //    saldoPendiente: 0
 
-                    //);
-                
+                //);
+
             },
             {
                 title: 'Panel 2',
@@ -484,7 +508,10 @@
                     fields: [
                         'name',
                         'apellido',
-                        'direccion'
+                        'direccion',
+                        'articulo',
+                        'marca'
+
                     ],
                     data: [
                         { name: 'Juan', apellido: 'Perez', direccion: 'Calle Falsa 132' },
@@ -503,9 +530,14 @@
                     items: [
                       { text: 'Nombre', dataIndex: 'name', flex: 1 },
                       { text: 'Apellido', dataIndex: 'apellido', flex: 1 },
-                      { text: 'Direccion', dataIndex: 'direccion', flex: 1 }
+                      { text: 'Direccion', dataIndex: 'direccion', flex: 1 },
+                      { text: 'Articulo', dataIndex: 'articulo', flex: 1 }
+
                     ]
                 }
+            },
+            {
+
             }
         ]
     }]

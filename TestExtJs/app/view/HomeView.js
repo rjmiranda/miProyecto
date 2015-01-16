@@ -2,7 +2,7 @@
     extend: 'Ext.tab.Panel',
     alias: 'widget.homeview',
     itemId: 'home',
-    activeTab: 0,
+    activeTab: 1,
     layout: 'auto',
     title: 'Inicio(homeview)',
     items: [
@@ -11,6 +11,9 @@
         },
         {
             xtype: 'layouttableview'
+        },
+        {
+            xtype:'formview'
         }
     ]
 });

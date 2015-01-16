@@ -6,10 +6,12 @@
         'usuarios.user.ListView',
         'usuarios.user.EditView',
         'HomeView',
+        'usuarios.formulario.FormView'
     ],
     refs: [
         { ref: 'usuariosUserListView', selector: '#usuariosUserListView' },
-        { ref: 'usuariosUserEditView', selector: '#usuariosUserEditView' }
+        { ref: 'usuariosUserEditView', selector: '#usuariosUserEditView' },
+        { ref: 'grilla6', selector: '#grilla6' }
     ],
 
     init: function () {
@@ -34,7 +36,7 @@
 
     MostrarEditView: function () {
         //este metodo solo muestra la view p/ insertar usuario
-        var view = Ext.widget('usuariosuseredit');
+        var view = Ext.widget('usuariosuseredit');       
     },
 
     AgregarUsuario: function (button) {
@@ -56,7 +58,7 @@
         boton.setText('Actualizar Usuario');
         boton.action = 'actualizarUsuario';
         var form = view.down('form');
-        form.loadRecord(record);
+       form.loadRecord(record);
 
     },
 
@@ -68,11 +70,7 @@
         var values = form.getValues();
         record.set(values);
         win.close();
-        //var grilla = Ext.ComponentQuery.query('#usuariosUserListView');
-        //var items = grilla[0].store.data.items;
-        //for (var i = 0; i < items.length; i++);
-        //{ console.log(items[i].data) };
-
+       
         //que datos entran?
         //obtengo datos
         //a quien se lo quiero asignar los datos
@@ -95,3 +93,6 @@
     }
 
 });
+//select: function (obj, record, rowIndex) {                       
+ //   this.getStore().removeAt(rowIndex);
+ //   console.log('Estoy Eliminando :  ' + record);

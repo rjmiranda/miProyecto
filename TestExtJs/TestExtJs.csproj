@@ -166,11 +166,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="app\controller\FormularioController.js" />
     <Content Include="app\controller\LayoutController.js" />
     <Content Include="app\controller\UsersController.js" />
     <Content Include="app\view\HomeView.js" />
     <Content Include="app\view\layout\LayoutTableView.js" />
+    <Content Include="app\view\usuarios\formulario\FormView1.js" />
     <Content Include="app\view\usuarios\user\EditView.js" />
+    <Content Include="app\view\usuarios\formulario\FormView.js" />
     <Content Include="app\view\usuarios\user\ListView.js" />
     <Content Include="as.jpg" />
     <Content Include="ExtJs\ext-all-dev.js" />

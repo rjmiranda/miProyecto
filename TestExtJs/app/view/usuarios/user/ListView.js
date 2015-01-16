@@ -36,9 +36,11 @@
                 dataIndex: 'active'
             },
             {
-                xtype: 'actioncolumn', icon: 'cross.png', width: 30,
+                xtype: 'actioncolumn',
+                icon: 'cross.png',
+                width: 30,
                 handler: function (view, rowIndex, colIndex, item, e, record) {
-                    // debugger;
+                    debugger;
                     record.store.remove(record);
                 }
             }

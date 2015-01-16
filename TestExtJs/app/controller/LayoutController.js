@@ -4,7 +4,7 @@
     itemId: 'layoutController',
     views: [
         'layout.LayoutTableView'
-        
+
     ],
     refs: [
         { ref: 'layoutTableView', selector: '#layoutTableView' },
@@ -14,7 +14,8 @@
         { ref: 'resultado', selector: '#resultado' },
         { ref: 'gridUno', selector: '#gridUno' },
         { ref: 'articulo', selector: '#articulo' },
-        { ref: 'detalle', selector: '#detalle' }
+        { ref: 'detalle', selector: '#detalle' },
+       { ref: 'ingresarProducto', selector: '#ingresarProducto' }
 
     ],
     init: function () {
@@ -22,13 +23,14 @@
 
             'layouttableview button[action=calcular]': {
                 click: this.calcular
+            },
+            'layouttableview button[action=ingresarProductos]': {
+                click: this.IngresarProductos
             }
         }
       );
     },
     calcular: function () {
-        console.log('entreeeeeee');
-        // debugger;
         var nombreProducto = this.getNombreProducto();
         var cantidad = this.getCantidad();
         var resultado = this.getResultado();
@@ -38,13 +40,20 @@
         var items = articulo.store.data.items;
         for (var i = 0; i < items.length; i++) {
             console.log(items[i].data.articulo)
-            if (items[i].data.articulo == nombreProducto.value) {             
+            if (items[i].data.articulo == nombreProducto.value) {
                 var precio = items[i].data.precio;
                 console.log(precio)
-            } 
+            }
         }
-        var calcular = precio * cantidad.value;        
+        var calcular = precio * cantidad.value;
         resultado.setValue(calcular);
         detalle.setValue('producto :' + nombreProducto.value + ' $ ' + precio);
+    },
+
+    IngresarProductos: function (button) {
+        console.log('boton activado');
+        var win = Ext.widget('layouttableview');
     }
+
+
 });
