@@ -5,6 +5,7 @@
     title: 'this is an example of a table',
     isTopLevel: true,
     modal: true,
+    autoScroll: true,
     bodyPadding: 5,
     layout: {
         type: 'table',
@@ -42,11 +43,56 @@
                         'activar'
                     ],
                     data: [
-                        { articulo: 'Plato', marca: 'Tsuji', modelo: true, vidrio: 'NO', aceroInox: 'NO', porcelana: 'YES', precio: 50, activar: true },
-                        { articulo: 'Vaso', marca: 'Winsord', modelo: false, vidrio: 'YES', aceroInox: 'NO', porcelana: 'NO', precio: 10, activar: false },
-                        { articulo: 'Detergente', marca: 'Ariel', modelo: false, vidrio: 'NO', aceroInox: 'NO', porcelana: 'NO', precio: 110, activar: true },
-                        { articulo: 'Cuchillo', marca: 'Arbolito', modelo: true, vidrio: 'NO', aceroInox: 'YES', porcelana: 'NO', precio: 550, activar: false },
-                        { articulo: 'Sarten Argentino', marca: 'Pingocho', modelo: true, vidrio: 'NO', aceroInox: 'SI', porcelana: 'NO', precio: 999, activar: true }
+                        {
+                            articulo: 'Plato',
+                            marca: 'Tsuji',
+                            modelo: true,
+                            vidrio: 'NO',
+                            aceroInox: 'NO',
+                            porcelana: 'YES',
+                            precio: 50,
+                            activar: true
+                        },
+                        {
+                            articulo: 'Vaso',
+                            marca: 'Winsord',
+                            modelo: false,
+                            vidrio: 'YES',
+                            aceroInox: 'NO',
+                            porcelana: 'NO',
+                            precio: 10,
+                            activar: false
+                        },
+                        {
+                            articulo: 'Detergente',
+                            marca: 'Ariel',
+                            modelo: false,
+                            vidrio: 'NO',
+                            aceroInox: 'NO',
+                            porcelana: 'NO',
+                            precio: 110,
+                            activar: true
+                        },
+                        {
+                            articulo: 'Cuchillo',
+                            marca: 'Arbolito',
+                            modelo: true,
+                            vidrio: 'NO',
+                            aceroInox: 'YES',
+                            porcelana: 'NO',
+                            precio: 550,
+                            activar: false
+                        },
+                        {
+                            articulo: 'Sarten Argentino',
+                            marca: 'Pingocho',
+                            modelo: true,
+                            vidrio: 'NO',
+                            aceroInox: 'SI',
+                            porcelana: 'NO',
+                            precio: 999,
+                            activar: true
+                        }
                     ]
                 },
                 columns: {
@@ -103,28 +149,25 @@
                     ]
                 },
                 listeners: {
-                    select: function (obj, record, rowIndex) {
-                       
-                        var datoEliminado = record.data
-                        var articulo = record.data.articulo;
-                        var rowIndex = rowIndex;
-                        console.log(rowIndex);
+                    select: function (record, store) {
+                        var article = store.data.articulo;
                         var textField = Ext.ComponentQuery.query('#textField');
                         var value = textField[0];
-                        var campos = value.setValue(articulo);
-
-                        //this.getStore().insert(0, rec);
-                        //this.cellEditing.startEditByPosition({
-                        //    row: 0,
-                        //    column: 0
-                        //});
-
-                      //  this.getStore().removeAt(rowIndex);                        
-                        console.log(datoEliminado);
-                        var Grilla6 = Ext.ComponentQuery.query('#grilla6')
-                        var Grilla6Items = Grilla6[0].store.data.items[0].data;
-                        var Grilla06 = Grilla6[0].store
-                        var poner = Grilla06.add(datoEliminado)
+                        var field = value.setValue(article);
+                        // AGREGAR LOS DATOS A OTRA GRILLA  //
+                        var raw = store.data;
+                        var grilla6 = Ext.ComponentQuery.query('#grilla6');
+                        var values = grilla6[0];
+                        var agregar = values.store.add(raw);
+                                
+                        var gridUno=Ext.ComponentQuery.query('#gridUno') 
+                        var items = gridUno[0].store.data.items;
+                        //for (var i = 0; i < items.length; i++) {
+                        //    console.log(items[i].data.articulo);
+                        //};
+                        debugger;
+                        items.forEach(function (article) { })
+                        console.log(article)
                     }
                 }
             },
@@ -141,8 +184,6 @@
                         xtype: 'button',
                         text: 'Options',
                         handler: function () {
-                            //    var view = Ext.widget('javascript1');
-                            //    console.log(view);
                         },
                         menu: new Ext.menu.Menu({
                             items: [

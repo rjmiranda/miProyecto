@@ -27,8 +27,7 @@
             'layouttableview button[action=ingresarProductos]': {
                 click: this.IngresarProductos
             }
-        }
-      );
+        });
     },
     calcular: function () {
         var nombreProducto = this.getNombreProducto();
